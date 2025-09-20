@@ -15,7 +15,7 @@ from typing import (
 )
 
 from .. import display, utils
-from ..acquisition import AcquisitionManager, AnalysisData
+from ..acquisition import AcquisitionBackend, AcquisitionManager, AnalysisData
 from ..logger import logger
 from . import display_widget
 
@@ -83,6 +83,7 @@ class AcquisitionAnalysisManager(AcquisitionManager):
         save_on_edit_analysis: Optional[bool] = None,
         save_fig_inside_h5: bool = False,
         shell: Any = True,
+        backend: AcquisitionBackend | None = None
     ):
         """
         AcquisitionAnalysisManager.
@@ -131,6 +132,7 @@ class AcquisitionAnalysisManager(AcquisitionManager):
             config_files=config_files,
             save_files=save_files,
             save_on_edit=save_on_edit,
+            backend=backend
         )
 
     @property
