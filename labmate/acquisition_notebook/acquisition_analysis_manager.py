@@ -83,7 +83,7 @@ class AcquisitionAnalysisManager(AcquisitionManager):
         save_on_edit_analysis: Optional[bool] = None,
         save_fig_inside_h5: bool = False,
         shell: Any = True,
-        backend: AcquisitionBackend | None = None
+        backend: Optional[AcquisitionBackend] = None
     ):
         """
         AcquisitionAnalysisManager.
