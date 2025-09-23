@@ -222,6 +222,14 @@ class AcquisitionAnalysisManager(AcquisitionManager):
                 fig = fig or fig_or_name
         self.save_fig_only(fig=fig, name=name, **kwds)
         self.save_analysis_cell(name=name, cell=cell)
+        acquisition_for_save = None
+        if self._backend is not None:
+            try:
+                acquisition_for_save = self.current_acquisition
+            except ValueError:
+                acquisition_for_save = None
+        if acquisition_for_save is not None:
+            self._schedule_backend_save(acquisition_for_save)
         if self._connected_widgets:
             display_widget.display_widgets(
                 self._connected_widgets,
